@@ -4,10 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
     <title>Projeto - DoWhile 2021</title>
-
     <link rel="stylesheet" href="_css/style.css" /> 
-    <script type="text/javascript" src="_js/script.js"></script>
-
     <!-- Configuração das Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,18 +17,19 @@
           <span>
             <img src="_images/build.svg" alt="SeloRocketseat" />
           </span>
-          <img src="_images/deme.png" alt="Foto usuário" />
+          <img id="avatarUrl" src="_images/deme.png" alt="Foto usuário" />
         </div>
         <h1 id="userName">Demetrius Tobias</h1>
-        <a href="https://github.com/Demetrrius"  target="_blank"> 
-          <img src="_images/github.svg" alt="Imagem Github" />demetrius</a>
+        <a id="userImage" href="https://github.com/Demetrrius"  target="_blank"> 
+          <img  src="_images/github.svg" alt="Imagem Github" />
+          <span id="userLogin" >Demetrius</span></a>
         <h5>Access my Github</h5>  
-        <p>
+        <p id="userBio">
           Frontend development lover, starting web programming.
         </p>              
         <ul id="socialLinks">                   
           <li  class="youtube"> 
-            <a href="https://youtube.com/channel/UCINyqZiTd_bJJpdVcXAgWEg" target="_blank">
+            <a href="https://youtube.com/" target="_blank">
               <img 
                 src="_images/youtube.png" 
                 alt="yotube.com"               
@@ -39,7 +37,7 @@
             </a>            
           </li>
           <li class="instagram">
-            <a href="http://www.instagram.com/demein.bjj/"  target="_blank">
+            <a href="http://www.instagram.com/"  target="_blank">
               <img 
                 src="_images/instagram.png" 
                 alt="instagram"               
@@ -47,7 +45,7 @@
             </a>
           </li>
           <li class="facebook">
-            <a href="https://www.facebook.com/demetriustobias" alt="facebook"  target="_blank" >
+            <a href="https://www.facebook.com/" alt="facebook"  target="_blank" >
               <img 
                 src="_images/facebook.png" 
                 alt="facebook"               
@@ -64,8 +62,7 @@
           </li>
         </ul>
       </div>
-    </main>     
-    
+    </main>       
     <script>
       const linksSocialMedia ={
         github: "Demetrrius",
@@ -76,16 +73,28 @@
       }      
       function changeSocialMediaLinks() {  
         for (let li of socialLinks.children) {
-           const social = li.getAttribute("class")
+          const social = li.getAttribute("class")
 
           li.children[0].href = `https://${social}.com/${linksSocialMedia[social]}` 
-          alert(li.children[0].href)
+          
         }    
       }      
-      changeSocialMediaLinks()      
-    </script>
-    
+      changeSocialMediaLinks()       
 
-    
+      function getGitHubProfileInfos(){
+        const url = `https://api.github.com/users/${linksSocialMedia.github}`   
+        fetch(url)        
+        .then(response => response.json()) 
+        .then(data =>{
+          userName.textContent = data.name,
+          userBio.textContent = data.bio,
+          userLink.href = data.html_url,
+          userImage.src = data.avatar_Url,
+          userLogin.textContent = data.login          
+        })
+      }       
+      
+      getGitHubProfileInfos()
+    </script> 
   </body>
 </html>
