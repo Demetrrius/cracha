@@ -44,6 +44,8 @@ main {
   z-index: 1 ;
 }
 
+
+
 .avatar > img{
   width: 10rem;
   height: 11.5rem;
@@ -51,14 +53,21 @@ main {
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
 }
 
+
 h1
 {
   font-size: 1.5em;
-  margin-top:1.5rem;
+  margin-top: .2rem;
+  margin-bottom: .5rem;
+  
+}
+h1#userName{  
+  font-variant: small-caps;
 }
 
 h5{
   color: var(--gray);
+  margin-top: .5rem;
 }
 
 a {
@@ -79,9 +88,10 @@ p {
 ul {
   margin-top: 4rem;
   list-style:none ;
-  padding: 0; /*Espaçamento inteno */
-  display:flex; /* Coloca os objetos um ao lado do outro no eixo X*/
-  gap: 0.5rem; /* Coloca um espaço entre os objetos */
-  justify-content: center; /* Coloca os objetos centralizados quanto utilizamos o flex ou grid*/
+  padding: 0;              /*Espaçamento inteno */
+  display:flex;            /* Coloca os objetos um ao lado do outro no eixo X*/
+  gap: 0.5rem;             /* Coloca um espaço entre os objetos */
+  justify-content: center; /* Coloca os objetos centralizados quanto utilizamos o   
+  flex ou grid*/
 }
-    
+
